@@ -1,37 +1,38 @@
 ﻿<html>
 	<head>
-		<title>Вывести дату третьего понедельника следующего года</title>
+		<title>Вывод количества дней, прошедших с первого мая текущего года</title>
 	</head>
 	<body>
-		<h2 align=center>Вывести дату третьего понедельника следующего года</h2>
+		<h2 align=center>Вывод количества дней, прошедших с первого мая текущего года</h2>
 		<?php
 			if(isset($_GET['value'])){
 			$Date = DateTime::createFromFormat(
 				'Y-m-d',
 				$_GET['value']
 			);
-			}else{
-			$Date=new DateTime;
-			}		
+		}
 		?>
 		<form align=center action="index.php" method="GET">
 			<input type="date" name="value" value="<?php
 			if(isset($Date)){
-				echo htmlspecialchars($Date-> Format('Y-m-d'));
+				echo htmlspecialchars($Date-> Format('d.m.Y'));
+			}
+			else{
+				echo date('Y-m-d');
 			}
 			?>">
-			<input type="submit" name="output" value="Вывести">
+			<input type="submit" value="Узнать результат">
 		</form>
 	    <?php
-			if(isset($Date) && $_GET['output']){
+			if(isset($Date)){
 				$month = $Date -> Format('m');
 				$year = $Date -> Format('Y');
 				$day = $Date -> Format('d');
-				$firstOfJanuary =  new DateTime;
-				$firstOfJanuary -> setDate($year+1, 1, 15);
-				$dayFromJanuary = $firstOfJanuary -> Format('d');
+				$firstOfMay =  new DateTime;
+				$firstOfMay -> setDate($year+1, 1, 15);
+				$dayFromMay = $firstOfMay -> Format('d');
 				for ($i=1; $i<=7; $i++) {
-					$NewDate = $firstOfJanuary -> setDate($year+1, 1, $dayFromJanuary);
+					$NewDate = $firstOfMay -> setDate($year+1, 1, $dayFromMay);
 					$NewDate -> Format('d.m.Y');
 					$dayOfWeek = $NewDate -> Format('D');
 					if($dayOfWeek == 'Mon') {
@@ -41,7 +42,7 @@
 						echo ".</center>";
 						break;
 					}
-					$dayFromJanuary =$dayFromJanuary+1;
+					$dayFromMay =$dayFromMay+1;
 				}
 			}
 		?>
