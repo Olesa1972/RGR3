@@ -1,9 +1,11 @@
 ﻿<html>
 	<head>
-		<title>Вывод количества дней, прошедших с первого мая текущего года</title>
+		<title>Вывести дату третьего понедельника следующего года.
+</title>
 	</head>
 	<body>
-		<h2 align=center>Вывод количества дней, прошедших с первого мая текущего года</h2>
+		<h2 align=center>Вывести дату третьего понедельника следующего года.
+</h2>
 		<?php
 			if(isset($_GET['value'])){
 			$Date = DateTime::createFromFormat(
@@ -28,9 +30,9 @@
 				$month = $Date -> Format('m');
 				$year = $Date -> Format('Y');
 				$day = $Date -> Format('d');
-				$firstOfMay =  new DateTime;
-				$firstOfMay -> setDate($year+1, 1, 15);
-				$dayFromMay = $firstOfMay -> Format('d');
+				$firstOfJanuary =  new DateTime;
+				$firstOfJanuary-> setDate($year+1, 1, 15);
+				$dayFromMay = $firstOfJanuary -> Format('d');
 				for ($i=1; $i<=7; $i++) {
 					$NewDate = $firstOfMay -> setDate($year+1, 1, $dayFromMay);
 					$NewDate -> Format('d.m.Y');
@@ -42,7 +44,7 @@
 						echo ".</center>";
 						break;
 					}
-					$dayFromMay =$dayFromMay+1;
+					$dayFromMay =$dayFromJanuary+1;
 				}
 			}
 		?>
