@@ -32,9 +32,9 @@
 				$day = $Date -> Format('d');
 				$firstOfJanuary =  new DateTime;
 				$firstOfJanuary-> setDate($year+1, 1, 15);
-				$dayFromMay = $firstOfJanuary -> Format('d');
+				$dayFromJanuary = $firstOfJanuary -> Format('d');
 				for ($i=1; $i<=7; $i++) {
-					$NewDate = $firstOfMay -> setDate($year+1, 1, $dayFromMay);
+					$NewDate = $firstOfJanuary -> setDate($year+1, 1, $dayFromJanuary);
 					$NewDate -> Format('d.m.Y');
 					$dayOfWeek = $NewDate -> Format('D');
 					if($dayOfWeek == 'Mon') {
@@ -44,7 +44,7 @@
 						echo ".</center>";
 						break;
 					}
-					$dayFromMay =$dayFromJanuary+1;
+					$dayFromJanuary =$dayFromJanuary+1;
 				}
 			}
 		?>
